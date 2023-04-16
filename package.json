@@ -1,6 +1,6 @@
 {
   "name": "typegrad",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A simple scalar autograd library for TypeScript",
   "author": {
     "name": "Jasir Zaeem"
