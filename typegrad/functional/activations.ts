@@ -17,7 +17,7 @@ export const sigmoid = (a: Value) => {
 };
 
 export const relu = (a: Value) => {
-  const out = new Value(Math.max(0, a.value), [a], `relu(${a.value})`);
+  const out = new Value(Math.max(0, a.value), [a], "relu");
   out._backward = () => {
     a.grad += out.grad * (out.value > 0 ? 1 : 0);
   };
