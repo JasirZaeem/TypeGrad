@@ -1,0 +1,40 @@
+{
+  "name": "typegrad",
+  "version": "0.1.0",
+  "description": "A simple scalar autograd library for TypeScript",
+  "author": {
+    "name": "Jasir Zaeem"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JasirZaeem/typegrad.git"
+  },
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "yarn run clean && tsc && tsc-alias"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.37.0",
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
+    "@typescript-eslint/parser": "^5.58.0",
+    "eslint": "^8.38.0",
+    "prettier": "2.8.7",
+    "tsc-alias": "^1.8.5",
+    "typescript": "^5.0.4"
+  }
+}
