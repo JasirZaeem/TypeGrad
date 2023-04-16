@@ -101,4 +101,4 @@ export class Value {
   }
 }
 
-export const value = Value.from;
+export const v = Value.from;
