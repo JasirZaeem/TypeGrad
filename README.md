@@ -2,7 +2,7 @@
 
 TypeGrad is a simple scalar autograd library in TypeScript. It is designed to be easy to use and understand, and to be a good starting point for learning about autograd. Based on the micrograd library by [Andrej Karpathy](https://github.com/karpathy/micrograd)
 
-Note: This library is not intended for production use. It is not optimized for speed, and it does not support GPU acceleration. Try [Shumai](https://github.com/facebookresearch/shumai) by Facebook Research of [TensorFlow.js](https://github.com/tensorflow/tfjs) for GPU acceleration and vectorization.
+Note: This library is not intended for production use. It is not optimized for speed, and it does not support GPU acceleration. Try [Shumai](https://github.com/facebookresearch/shumai) by Facebook Research or [TensorFlow.js](https://github.com/tensorflow/tfjs) for GPU acceleration and vectorization.
 
 ### Installation
 
@@ -45,7 +45,7 @@ console.log(`dz/dx at x=3: ${x.grad}`); // dz/dx at x=3: 108
 console.log(`dz/dy at y=4: ${y.grad}`); // dz/dy at y=4: 16
 ```
 
-There are also some implementations of feedforward neural networks in the, based on composition of the available operations.
+There are also some implementations of feedforward neural networks in TypeGrad, based on composition of the available operations.
 
 ### ANN Example
 
@@ -90,10 +90,17 @@ const {
 const x = tg.fromMatrix(xStandardized);
 const y = tg.fromMatrix(yStandardized);
 
-// const model = tg.neuron(2, tg.Activations.Identity); A single neuron with 2 inputs and identity activation (y = x)
-// const model = tg.layer(2, 1, tg.Activations.Identity); A single layer with 2 inputs, 1 output, and identity activation (y = x)
-// const model = tg.MLP(2, [[1, tg.Activations.Identity]]); A Multi-Layer Perceptron with 2 inputs and 1 layer with 1 output with identity activation
-const model = tg.sequential(tg.layer(2, 1, tg.Activations.Identity)); // A Sequential module with one linear layer with 2 inputs and 1 output with identity activation
+// A single neuron with 2 inputs and identity activation (y = x)
+// const model = tg.neuron(2, tg.Activations.Identity);
+
+// Or A single layer with 2 inputs, 1 output, and identity activation (y = x)
+// const model = tg.layer(2, 1, tg.Activations.Identity);
+
+// Or A Multi-Layer Perceptron with 2 inputs and 1 layer with 1 output with identity activation
+// const model = tg.MLP(2, [[1, tg.Activations.Identity]]);
+
+// Or A Sequential module with one linear layer with 2 inputs and 1 output with identity activation
+const model = tg.sequential(tg.layer(2, 1, tg.Activations.Identity));
 
 // Stochastic Gradient Descent with learning rate 0.1
 const optimizer = tg.SGD({ lr: 0.1, model });
